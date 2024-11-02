@@ -1,0 +1,9 @@
+{
+  "name": "CatCode.Frontend.CoreApp",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "git@github.com:MatiWall/CatCode.Frontend.CoreApp.git",
+  "author": "Matias Wallenius <MatiWall@live.dk>",
+  "license": "no",
+  "private": false
+}
