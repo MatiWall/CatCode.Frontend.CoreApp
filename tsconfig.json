@@ -13,7 +13,7 @@
       "sourceMap": true,                       // Generate sourcemap files
       "jsx": "react",  
     },
-    "include": ["src/**/*.ts", "tests/**/*.ts", "tests/RouteResolverProvider.test.tsx", "tests/UseRouteRef.test.tsx", "tests/RoutableComponent.test.tsx"], // Include all .ts files in src and tests
+    "include": ["src/**/*.ts", "tests/**/*.ts", "tests/RouteResolverProvider.test.tsx", "tests/UseRouteRef.test.tsx", "tests/RoutableComponent.test.tsx", "src/app/App.tsx"], // Include all .ts files in src and tests
     "exclude": ["node_modules"]               // Exclude node_modules from compilation
   }
   

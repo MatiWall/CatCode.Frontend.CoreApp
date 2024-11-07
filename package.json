@@ -5,5 +5,12 @@
   "repository": "git@github.com:MatiWall/CatCode.Frontend.CoreApp.git",
   "author": "Matias Wallenius <MatiWall@live.dk>",
   "license": "no",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "@catcode/core-plugin": "^0.1.1",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12"
+  }
 }
