@@ -1,16 +1,28 @@
 {
   "name": "CatCode.Frontend.CoreApp",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:MatiWall/CatCode.Frontend.CoreApp.git",
   "author": "Matias Wallenius <MatiWall@live.dk>",
   "license": "no",
-  "private": false,
+  "private": false,  
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@catcode/core-plugin": "^0.1.1",
+    "@catcode/core-plugin": "^0.1.4",
     "react": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12"
+    "@types/jest": "^29.5.14",
+    "@types/react": "^18.3.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.2.5"
   }
 }
