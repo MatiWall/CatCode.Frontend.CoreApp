@@ -1,6 +1,6 @@
 import { ExtensionKind, createExtension, idGenerator} from "@catcode/core-plugin";
 
-import { resolveTree } from "./resolve";
+import {buildFlatMap, buildTree } from "./resolve";
 
 
 
@@ -51,7 +51,9 @@ describe('Test resolveTree', () => {
             }),
         ];
 
-        const tree = resolveTree(extensions);
+        const flatMap = buildFlatMap(extensions);
+
+        const tree = buildTree(flatMap);
 
         // Define the expected tree structure
         const expectedTree = [

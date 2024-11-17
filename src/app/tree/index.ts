@@ -1,5 +1,8 @@
-import { resolveTree } from "./resolve";
+import { resolveTree, extensionMap, buildFlatMap, buildTree } from "./resolve";
 
-export {
-    resolveTree
+export { 
+    resolveTree, 
+    extensionMap, 
+    buildFlatMap, 
+    buildTree 
 }

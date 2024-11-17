@@ -1,9 +1,15 @@
 import { Extension } from "@catcode/core-plugin";
 
-type Node = {
-    id: string,
-    children: string[]
 
+function extensionMap(extensions: Extension[]):  {[id: string]: Extension}{
+    
+
+    const map: {[id: string]: Extension} = {}
+    extensions.forEach((extension)=>{
+        map[extension.id] = extension
+    })
+    
+    return map;
 }
 
 function buildFlatMap(extensions: Extension[]): {[parentId: string]: string[]} {
@@ -66,5 +72,8 @@ function resolveTree(extensions: Extension[]){
 
 
 export {
-    resolveTree
+    resolveTree,
+    buildFlatMap,
+    buildTree,
+    extensionMap
 }
