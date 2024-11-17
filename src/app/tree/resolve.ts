@@ -1,5 +1,10 @@
 import { Extension } from "@catcode/core-plugin";
 
+type Node = {
+    id: string,
+    children: string[]
+
+}
 
 function buildFlatMap(extensions: Extension[]): {[parentId: string]: string[]} {
     let idMap: {[parentId: string]: string[]} = {}
@@ -38,11 +43,11 @@ function buildTree(flatMap: {[parentId: string]: string[]}){
 
     const roots = findTreeRoot(flatMap);
 
-    function buildNode(parentId: string):{parentId: string, children: object} {
+    function buildNode(id: string):{id: string, children: object} {
         
-        const children = flatMap[parentId] || [];
+        const children = flatMap[id] || [];
 
-        return {parentId: parentId, children: children.map(key => buildNode(key))}
+        return {id: id, children: children.map(key => buildNode(key))}
 
     }
 

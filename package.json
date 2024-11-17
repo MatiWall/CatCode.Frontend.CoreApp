@@ -6,7 +6,7 @@
   "repository": "git@github.com:MatiWall/CatCode.Frontend.CoreApp.git",
   "author": "Matias Wallenius <MatiWall@live.dk>",
   "license": "no",
-  "private": false,  
+  "private": false,
   "scripts": {
     "test": "jest",
     "build": "tsc"
@@ -15,14 +15,31 @@
     "dist"
   ],
   "dependencies": {
-    "@catcode/core-plugin": "^0.1.4",
+    "@babel/preset-typescript": "^7.26.0",
+    "@catcode/core-plugin": "0.1.6",
     "react": "^18.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.12",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "ts-jest": "^29.2.5"
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(ts|tsx)?$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "transformIgnorePatterns": [],
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ]
   }
 }

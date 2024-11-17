@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-      "target": "ES6",                        // Specify ECMAScript target version
-      "module": "ES6",                        // Use ESModules
+      "module": "CommonJS",
+      "target": "ES6",                       // Use ESModules
       "moduleResolution": "node",             // Resolve modules like Node.js
       "esModuleInterop": true,                // Ensures ESModule compatibility
       "strict": true,                         // Enable strict type checking options
@@ -14,7 +14,9 @@
       "jsx": "react",  
       "lib": ["es6", "dom", "es2017"],
     },
-    "include": ["src/**/*.ts", "tests/**/*.ts", "tests/RouteResolverProvider.test.tsx", "tests/UseRouteRef.test.tsx", "tests/RoutableComponent.test.tsx", "src/app/App.tsx"], // Include all .ts files in src and tests
-    "exclude": ["node_modules"]               // Exclude node_modules from compilation
+    "include": ["src/**/*.ts", "src/app/App.tsx"],
+    "paths": {
+      "@catcode/*": ["./node_modules/@catcode/*"]
+    }
   }
   
