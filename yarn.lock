@@ -940,12 +940,14 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@catcode/core-plugin@0.1.6":
-  version "0.1.6"
-  resolved "http://verdaccio.mw.local/@catcode/core-plugin/-/core-plugin-0.1.6.tgz#b2cd40ae1b5171ed11ec89956aeb38472f8dfa17"
-  integrity sha512-JhTAyHiseV/uAV0K8dkrLvhlDcEPSYaBKK8weB66I4RoWalyPSIyrfo3GhKmc5zOjjx/eyY5cgptdG6bjcF8zg==
+"@catcode/core-plugin@^0.1.10":
+  version "0.1.10"
+  resolved "http://verdaccio.mw.local/@catcode/core-plugin/-/core-plugin-0.1.10.tgz#1c8b47427140ec9dc2cd55a2691323d54bd05b08"
+  integrity sha512-aOuBp4B420xc8+A/szZh5mPdzRW84EhpMLg9oOMJ/27JAZXVKpKAaS631KkUYxDlkYDJkj/fAJ/3A1hZn10VIQ==
   dependencies:
     "@catcode/core-routing" "^0.1.0"
+    uuid "^11.0.3"
+    zod "^3.23.8"
 
 "@catcode/core-routing@^0.1.0":
   version "0.1.0"
@@ -3251,6 +3253,11 @@ uuid@^10.0.0:
   resolved "http://verdaccio.mw.local/uuid/-/uuid-10.0.0.tgz#5a95aa454e6e002725c79055fd42aaba30ca6294"
   integrity sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==
 
+uuid@^11.0.3:
+  version "11.0.3"
+  resolved "http://verdaccio.mw.local/uuid/-/uuid-11.0.3.tgz#248451cac9d1a4a4128033e765d137e2b2c49a3d"
+  integrity sha512-d0z310fCWv5dJwnX1Y/MncBAqGMKEzlBb1AOf7z9K8ALnd0utBX/msg/fA0+sbyN1ihbMsLhrBlnl1ak7Wa0rg==
+
 v8-to-istanbul@^9.0.1:
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-9.3.0.tgz#b9572abfa62bd556c16d75fdebc1a411d5ff3175"
@@ -3380,3 +3387,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.23.8:
+  version "3.23.8"
+  resolved "http://verdaccio.mw.local/zod/-/zod-3.23.8.tgz#e37b957b5d52079769fb8097099b592f0ef4067d"
+  integrity sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==

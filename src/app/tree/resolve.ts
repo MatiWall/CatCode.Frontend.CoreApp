@@ -1,7 +1,7 @@
 import { Extension } from "@catcode/core-plugin";
 
 
-function extensionMap(extensions: Extension[]):  {[id: string]: Extension}{
+function buildExtensionMap(extensions: Extension[]):  {[id: string]: Extension}{
     
 
     const map: {[id: string]: Extension} = {}
@@ -16,7 +16,7 @@ function buildFlatMap(extensions: Extension[]): {[parentId: string]: string[]} {
     let idMap: {[parentId: string]: string[]} = {}
     for (const extension of extensions) {
         const id: string = extension.id;
-        const parentId: string = extension.parentId();
+        const parentId: string = extension.attachTooId();
 
         // Initialize array if the parentId is not yet in the map
         if (!idMap[parentId]) {
@@ -61,19 +61,53 @@ function buildTree(flatMap: {[parentId: string]: string[]}){
 
 }
 
+
 function resolveTree(extensions: Extension[]){
 
     const flatMap = buildFlatMap(extensions);
 
     const tree = buildTree(flatMap);
+    if (Object.keys(tree).length === 0){
+        throw new Error('Extension tree does not have a root')
+    }
+    else if (Object.keys(tree).length >1){
+        throw new Error('Extension tree can not have multiple roots')
+    }
+
+
+    
 
     return tree
 }
 
+function buildExtensionTree(tree, extensions){
+
+    const extensionMap = buildExtensionMap(extensions);
+
+    const rootNode = Object.values(tree)[0];
+    
+    const rootExtension = extensionMap[rootNode.id]
+
+    // Recursive function to add child extensions
+    function addExtensions(extension: Extension, node: { id: string; children: object[] }) {
+        const children = node.children;
+        children.forEach((childNode: { id: string; children: object[] }) => {
+            const childExtension = extensionMap[childNode.id];
+            extension.addChild(childExtension); // Add child to parent
+            addExtensions(childExtension, childNode); // Recurse for further children
+        });
+    }
+
+    // Build the full extension tree
+    addExtensions(rootExtension, rootNode);
+
+    return rootExtension
+}
 
 export {
     resolveTree,
     buildFlatMap,
     buildTree,
-    extensionMap
+    buildExtensionMap,
+    buildExtensionTree
 }
