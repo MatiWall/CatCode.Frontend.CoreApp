@@ -1,5 +1,6 @@
-import { Extension } from "@catcode/core-plugin";
-
+import { Extension, ExtensionKind, idGenerator } from "@catcode/core-plugin";
+import { TreeNode } from "./types";
+import { resolvePlugin } from "@babel/core";
 
 function buildExtensionMap(extensions: Extension[]):  {[id: string]: Extension}{
     
@@ -30,26 +31,16 @@ function buildFlatMap(extensions: Extension[]): {[parentId: string]: string[]} {
     return idMap;
 }
 
-function findTreeRoot(flatMap: {[parentId: string]: string[]}){
-    /** Find the upper most items */
-    const keys = Object.keys(flatMap);
-    const values = Object.values(flatMap); 
 
-    const children = new Set()
+function buildTree(flatMap: {[parentId: string]: string[]}): TreeNode{
 
-    values.forEach(value => {
-        value.forEach(v => children.add(v))
-    });
+    const rootNamespace = 'root';
+    const rootName = 'app';
+    const rootKind = ExtensionKind.Component;
     
+    const rootId = idGenerator(rootNamespace, rootName, rootKind);
 
-    return keys.filter(key => !children.has(key))
-}
-
-function buildTree(flatMap: {[parentId: string]: string[]}){
-
-    const roots = findTreeRoot(flatMap);
-
-    function buildNode(id: string):{id: string, children: object} {
+    function buildNode(id: string): TreeNode {
         
         const children = flatMap[id] || [];
 
@@ -57,41 +48,36 @@ function buildTree(flatMap: {[parentId: string]: string[]}){
 
     }
 
-    return roots.map(key => buildNode(key))
+    const rootNode = buildNode(rootId);
 
+    return rootNode;
 }
 
 
-function resolveTree(extensions: Extension[]){
+function resolveTree(extensions: Extension[]): TreeNode{
 
     const flatMap = buildFlatMap(extensions);
 
     const tree = buildTree(flatMap);
-    if (Object.keys(tree).length === 0){
-        throw new Error('Extension tree does not have a root')
-    }
-    else if (Object.keys(tree).length >1){
-        throw new Error('Extension tree can not have multiple roots')
-    }
-
-
-    
 
     return tree
 }
 
-function buildExtensionTree(tree, extensions){
 
-    const extensionMap = buildExtensionMap(extensions);
+function buildExtensionTree(extensions: Extension[]){
 
-    const rootNode = Object.values(tree)[0];
+    const tree: TreeNode = resolveTree(extensions);
+    const extensionMap = buildExtensionMap(extensions);;
     
-    const rootExtension = extensionMap[rootNode.id]
+    const rootExtension = extensionMap[tree.id]
+    if (rootExtension === undefined){ 
+        throw new Error('No root extension found in extension map.')
+    }
 
     // Recursive function to add child extensions
-    function addExtensions(extension: Extension, node: { id: string; children: object[] }) {
+    function addExtensions(extension: Extension, node: TreeNode) {
         const children = node.children;
-        children.forEach((childNode: { id: string; children: object[] }) => {
+        children.forEach((childNode: TreeNode) => {
             const childExtension = extensionMap[childNode.id];
             extension.addChild(childExtension); // Add child to parent
             addExtensions(childExtension, childNode); // Recurse for further children
@@ -99,7 +85,7 @@ function buildExtensionTree(tree, extensions){
     }
 
     // Build the full extension tree
-    addExtensions(rootExtension, rootNode);
+    addExtensions(rootExtension, tree);
 
     return rootExtension
 }

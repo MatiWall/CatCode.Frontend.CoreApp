@@ -940,10 +940,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@catcode/core-plugin@^0.1.10":
-  version "0.1.10"
-  resolved "http://verdaccio.mw.local/@catcode/core-plugin/-/core-plugin-0.1.10.tgz#1c8b47427140ec9dc2cd55a2691323d54bd05b08"
-  integrity sha512-aOuBp4B420xc8+A/szZh5mPdzRW84EhpMLg9oOMJ/27JAZXVKpKAaS631KkUYxDlkYDJkj/fAJ/3A1hZn10VIQ==
+"@catcode/core-plugin@0.1.13":
+  version "0.1.13"
+  resolved "http://verdaccio.mw.local/@catcode/core-plugin/-/core-plugin-0.1.13.tgz#3c0aea02eca687626bc55352fdc8461f8b53b6c4"
+  integrity sha512-5vnVtQBA2uB/MXlQY0nHHCnlrhofqF+XlFv7WrAPgDj/cq9AU7EN9jO2BtjsQl6Ix4ujjmLLfsF+wKKQHcv01A==
   dependencies:
     "@catcode/core-routing" "^0.1.0"
     uuid "^11.0.3"
